@@ -18,8 +18,7 @@ def requirement(
     priority: Optional[str] = None,
     component: Optional[str] = None,
 ) -> Callable[[TestFunction], TestFunction]:
-    """
-    Decorator to assign unique test case IDs with optional metadata.
+    """Decorator to assign unique test case IDs with optional metadata.
 
     This decorator adds structured test identification that enables:
     - Running specific tests by ID using pytest markers
@@ -42,7 +41,14 @@ def requirement(
     sanitized_id = testcase_id.replace("-", "_").replace(" ", "_")
 
     def decorator(func: TestFunction) -> TestFunction:
-        # Add the primary test ID marker
+        """Internal decorator function that applies pytest markers.
+
+        Args:
+            func (TestFunction): Base test function
+
+        Returns:
+            TestFunction: Modified test function
+        """
         func = pytest.mark.test_id(testcase_id)(func)
         func = getattr(pytest.mark, f"id_{sanitized_id}")(func)
 
