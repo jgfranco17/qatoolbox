@@ -1,10 +1,10 @@
-class TestError(Exception):
+class ToolboxBaseError(Exception):
     """Base class for test errors."""
 
 
-class TestInvalid(TestError):
+class ToolboxInvalidTestError(ToolboxBaseError):
     """Test was improperly configured or executed."""
 
 
-class TestFailed(TestError):
+class ToolboxFailedTestError(ToolboxBaseError):
     """Test failed due to an unexpected error."""

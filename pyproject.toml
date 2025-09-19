@@ -13,4 +13,7 @@ dev = [
     "black>=25.1.0",
     "coverage>=7.10.6",
     "pre-commit>=4.3.0",
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+    "pytest-repeat>=0.9.4",
 ]
